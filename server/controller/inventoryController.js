@@ -24,10 +24,8 @@ exports.create = (req, res) => {
       res.status(200).send({ message: "inventory item added successfully" });
     })
     .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message ||
-          "Some error occurred while creating a create operation",
+      res.status(400).send({
+        message: err.message,
       });
     });
 };
@@ -58,12 +56,29 @@ exports.update = (req, res) => {
           message: `Cannot Update inventory with ${id}. Maybe inventory not found!`,
         });
       } else {
-        data.product_id = req.body.product_id;
-        data.name = req.body.name;
-        data.description = req.body.description;
-        data.stock = req.body.stock;
-        data.category = req.body.category;
-        data.price = req.body.price;
+        if (req.body.product_id) {
+          data.product_id = req.body.product_id;
+        }
+
+        if (req.body.name) {
+          data.name = req.body.name;
+        }
+
+        if (req.body.description) {
+          data.description = req.body.description;
+        }
+
+        if (req.body.stock) {
+          data.stock = req.body.stock;
+        }
+
+        if (req.body.category) {
+          data.category = req.body.category;
+        }
+
+        if (req.body.price) {
+          data.price = req.body.price;
+        }
 
         data
           .save()
@@ -75,7 +90,7 @@ exports.update = (req, res) => {
           });
       }
     })
-    .catch((err) => res.status(500).send(err.message));
+    .catch((err) => res.status(400).send({ message: err.message }));
 };
 
 // Delete a inventory with specified inventory id in the request
