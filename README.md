@@ -18,3 +18,7 @@
   4. in the terminal, type: npm run devstart
   > If you want to run locally, you need to provide your own MongoDB URI and set a environment variable 'MONGODB_URL'in the root directory.
   > Since MongoDB URI contains account and password information, my MongoDB URI is ignored in the repo.
+
+
+### preview
+<img src="https://github.com/lichever/pictureBedForNormalUse/blob/main/uPic/MjvxVp_2022_04_30.png" width=750 height=400 />
